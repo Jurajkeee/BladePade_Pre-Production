@@ -23,7 +23,8 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D body;
     private float rotationY;
     private bool jump;
-
+	public KeyCode Fire = KeyCode.F;
+	public bool lookAtCursor;
 
 
     private void Start()
@@ -83,75 +84,99 @@ public class PlayerControl : MonoBehaviour
     }
     private void Update()
     {
+		if (lookAtCursor == false) {
+
+			float angle = 0;
+			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		}
+		if(lookAtCursor)
+		{
+			Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+			lookPos = lookPos - transform.position;
+			float angle  = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		}
+
+
+		//left move needs to add anim Running
+		if (Input.GetKey (leftButton)) {
+			horizontal = -1;
 
 
 
-        //left move needs to add anim Running
-        if (Input.GetKey(leftButton))
-        {
-            horizontal = -1;
-
-
-
-        }
+		}
         //right move needs to add anim Running
-        else if (Input.GetKey(rightButton))
-        {
-            horizontal = 1;
+        else if (Input.GetKey (rightButton)) {
+			horizontal = 1;
 
 
-        }
-        else horizontal = 0;
-        //Jumping needs to add anim Jumping
-        if (Input.GetKey(addJumpForceButton) && jump)
-        {
-            body.velocity = new Vector2(0, jumpForce);
+		} else
+			horizontal = 0;
+		//Jumping needs to add anim Jumping
+		if (Input.GetKey (addJumpForceButton) && jump) {
+			body.velocity = new Vector2 (0, jumpForce);
 
-        }
+		}
 
 
 
 
-        direction = new Vector2(horizontal, 0);
+		direction = new Vector2 (horizontal, 0);
 
-        //Facing (Povorot) loop for it ,needed, dont touch it
-        if (horizontal > 0 && !isFacingRight) Flip(); else if (horizontal < 0 && isFacingRight) Flip();
+		//Facing (Povorot) loop for it ,needed, dont touch it
+		if (horizontal > 0 && !isFacingRight)
+			Flip ();
+		else if (horizontal < 0 && isFacingRight)
+			Flip ();
 
 
-        //ANIMATION SCRIPTS
+		//ANIMATION SCRIPTS
 
 
-        if (Input.GetKey(rightButton) | Input.GetKey(leftButton)&& vertical==0)
-        {
-            anim.SetFloat("Forward", 1);
-            anim.SetFloat("Standing", 2);
-            anim.SetFloat("Jumping", 0);
+		if (Input.GetKey (rightButton) | Input.GetKey (leftButton) && vertical == 0) {
+			anim.SetFloat ("Forward", 1);
+			anim.SetFloat ("Standing", 2);
+			anim.SetFloat ("Jumping", 0);
+			anim.SetFloat ("Shooting", 0);
+			lookAtCursor=false;
 
-        }
-        if (horizontal == 0 && vertical == 0)
-        {
-            anim.SetFloat("Jumping", 0);
-            anim.SetFloat("Forward", 0);
-            anim.SetFloat("Standing", -1);
-        }
-        if (Input.GetKey(addJumpForceButton))
-        {
-            anim.SetFloat("Jumping", 2);
-            anim.SetFloat("Forward", 0);
-            anim.SetFloat("Standing", 2);
-        }
-        if (Input.GetKey(addJumpForceButton)&& (Input.GetKeyDown(rightButton) | Input.GetKeyDown(leftButton))&&vertical==0)
-        {
-            anim.SetFloat("Jumping", 2);
-            anim.SetFloat("Forward", 0);
-            anim.SetFloat("Standing", 0);
-        }
+		}
+		if (horizontal == 0 && vertical == 0) {
+			anim.SetFloat ("Jumping", 0);
+			anim.SetFloat ("Forward", 0);
+			anim.SetFloat ("Standing", -1);
+			anim.SetFloat ("Shooting", 0);
+			lookAtCursor=false;
+		}
+		if (Input.GetKey (addJumpForceButton)) {
+			anim.SetFloat ("Jumping", 2);
+			anim.SetFloat ("Forward", 0);
+			anim.SetFloat ("Standing", 2);
+			anim.SetFloat ("Shooting", 0);
+			lookAtCursor=false;
+		}
+		if (Input.GetKey (addJumpForceButton) && (Input.GetKeyDown (rightButton) | Input.GetKeyDown (leftButton)) && vertical == 0) {
+			anim.SetFloat ("Jumping", 2);
+			anim.SetFloat ("Forward", 0);
+			anim.SetFloat ("Standing", 0);
+			anim.SetFloat ("Shooting", 0);
+			lookAtCursor=false;
+		}
        
+		if (Input.GetKey (Fire)) {
+			anim.SetFloat ("Jumping", 0);
+			anim.SetFloat ("Forward", 0);
+			anim.SetFloat ("Standing", 0);
+			anim.SetFloat ("Shooting", 1);
+			lookAtCursor=true;
+		}
         
+	}
+}
 
 
-        }
-    }
+        
+    
 
     
 
