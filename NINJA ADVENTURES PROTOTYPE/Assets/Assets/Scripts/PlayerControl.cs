@@ -25,8 +25,8 @@ public class PlayerControl : MonoBehaviour
     private bool jump;
     public KeyCode Fire = KeyCode.F;
     public bool lookAtCursor;
-    private ShootScript shootScript;
     
+   
     
     
 
@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour
     private void Start()
 
     {
-        shootScript = GetComponent<ShootScript>();
+        
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         body.fixedAngle = true;
@@ -151,6 +151,7 @@ public class PlayerControl : MonoBehaviour
             anim.SetFloat("Jumping", 0);
             anim.SetFloat("Shooting", 0);
             lookAtCursor = false;
+           
 
         }
         if (horizontal == 0 && vertical == 0)
@@ -160,6 +161,7 @@ public class PlayerControl : MonoBehaviour
             anim.SetFloat("Standing", -1);
             anim.SetFloat("Shooting", 0);
             lookAtCursor = false;
+            
         }
         if (Input.GetKey(addJumpForceButton))
         {
@@ -168,9 +170,11 @@ public class PlayerControl : MonoBehaviour
             anim.SetFloat("Standing", 2);
             anim.SetFloat("Shooting", 0);
             lookAtCursor = false;
+            
         }
         if (Input.GetKey(addJumpForceButton) && (Input.GetKeyDown(rightButton) | Input.GetKeyDown(leftButton)) && vertical == 0)
         {
+           
             anim.SetFloat("Jumping", 2);
             anim.SetFloat("Forward", 0);
             anim.SetFloat("Standing", 0);
@@ -178,6 +182,8 @@ public class PlayerControl : MonoBehaviour
             lookAtCursor = false;
         }
         if (Input.GetKey(Fire)) {
+           
+
             anim.SetFloat("flying", 2);
             anim.SetFloat("Jumping", 0);
             anim.SetFloat("Forward", 0);
@@ -185,12 +191,7 @@ public class PlayerControl : MonoBehaviour
             anim.SetFloat("Shooting", 1);
             lookAtCursor = true;
         }
-        if (Input.GetKeyDown(Fire))
-        {
-            shootScript.Attack(true);
-            
-           
-        }
+        
         
     }
 
