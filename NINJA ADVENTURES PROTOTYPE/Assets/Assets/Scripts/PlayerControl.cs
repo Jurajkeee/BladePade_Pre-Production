@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl1 : MonoBehaviour
 {
 
 

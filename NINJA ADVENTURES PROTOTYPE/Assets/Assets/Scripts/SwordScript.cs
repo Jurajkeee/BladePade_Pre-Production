@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SwordScript : MonoBehaviour {
+public class SwordScript : MonoBehaviour
+{
     private Animator anims;
     private float vertical;
     private float horizontal;
@@ -10,7 +11,8 @@ public class SwordScript : MonoBehaviour {
     private Rigidbody2D mySword;
     public KeyCode Fire = KeyCode.F;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         anims = GetComponent<Animator>();
         anims.SetFloat("flying", 2);
         mySword = GetComponent<Rigidbody2D>();
@@ -18,7 +20,8 @@ public class SwordScript : MonoBehaviour {
         GameObject Sword = GameObject.Find("Sword");
         PlayerControl playerControl = Sword.GetComponent<PlayerControl>();
     }
-    void OnCollisionEnter2D(Collision2D  collision) {
+    void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.transform.tag == "Ground" || collision.transform.tag == "Side")
         {
             body.gravityScale = 0;
@@ -27,14 +30,16 @@ public class SwordScript : MonoBehaviour {
             float angle = 0;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-       
-           
-        
+
+
+
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
-	
-	}
+    
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+    }
 }
