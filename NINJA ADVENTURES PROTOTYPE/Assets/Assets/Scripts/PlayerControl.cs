@@ -49,7 +49,7 @@ public class PlayerControl1 : MonoBehaviour
             body.drag = 10;
             jump = true;
         }
-        if (collision.transform.tag == "Side")
+        if (collision.transform.tag == "Side"|| collision.transform.tag == "LeftSide")
         {
             body.drag = 0;
             jump = false;
@@ -63,7 +63,7 @@ public class PlayerControl1 : MonoBehaviour
             body.drag = 0;
             jump = false;
         }
-        if (collision.transform.tag == "Side")
+        if (collision.transform.tag == "Side" || collision.transform.tag == "LeftSide")
         {
             body.drag = 0;
             jump = false;

@@ -7,7 +7,7 @@ public class SwordScript : MonoBehaviour
     private float vertical;
     private float horizontal;
     private Rigidbody2D body;
-   
+    public Shooting2 shooting;
     private int collisionCount = 0;
     
     public KeyCode Fire = KeyCode.F;
@@ -15,23 +15,36 @@ public class SwordScript : MonoBehaviour
     void Start()
     {
         
-        anims = GetComponent<Animator>();
-        anims.SetFloat("flying", 2);
+            shooting = GetComponent<Shooting2>();
+            anims = GetComponent<Animator>();
+            anims.SetFloat("flying", 2);
+
+            body = GetComponent<Rigidbody2D>();
         
-        body = GetComponent<Rigidbody2D>();
         
         
         
-}
+    }
     
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        body.gravityScale = 0;
-        body.isKinematic = true;
-        anims.SetFloat("flying", -2);
-        float angle = 0;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (collision.transform.tag == "Ground" || collision.transform.tag == "Side"|| collision.transform.tag == "LeftSide")
+        {
+            
+            body.gravityScale = 0;
+            body.isKinematic = true;
+            anims.SetFloat("flying", -2);
+            float angle = 0;
+            if (shooting.angle >= 90)
+            {
+                transform.rotation = Quaternion.AngleAxis(angle, Vector2.left);
+            } else transform.rotation = Quaternion.AngleAxis(angle, Vector2.right);
+
+        }
+        
     }
+    
 
 
     // Update is called once per frame
