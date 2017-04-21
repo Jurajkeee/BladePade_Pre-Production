@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Rigidbody2D))]
 
-public class PlayerControl1 : MonoBehaviour
+
+public class PlayerControl : MonoBehaviour
 {
 
 
@@ -26,7 +26,7 @@ public class PlayerControl1 : MonoBehaviour
     public KeyCode Fire = KeyCode.F;
     public bool lookAtCursor;
     
-   
+  
     
     
 
@@ -43,7 +43,7 @@ public class PlayerControl1 : MonoBehaviour
    
         private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Ground")
+        if (collision.transform.tag == "Ground" || collision.transform.tag == "bullet")
         {
 
             body.drag = 10;
@@ -57,7 +57,7 @@ public class PlayerControl1 : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Ground")
+        if (collision.transform.tag == "Ground" || collision.transform.tag == "bullet")
         {
 
             body.drag = 0;
@@ -80,14 +80,8 @@ public class PlayerControl1 : MonoBehaviour
 
 
     }
-    void Flip()
-    {
-        //Fliping completed and needed 100%
-        isFacingRight = !isFacingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-    }
+
+   
     private void Update()
     {
         if (lookAtCursor == false)
@@ -135,10 +129,7 @@ public class PlayerControl1 : MonoBehaviour
         direction = new Vector2(horizontal, 0);
 
         //Facing (Povorot) loop for it ,needed, dont touch it
-        if (horizontal > 0 && !isFacingRight)
-            Flip();
-        else if (horizontal < 0 && isFacingRight)
-            Flip();
+        
 
 
         //ANIMATION SCRIPTS

@@ -6,21 +6,23 @@ public class SwordScript : MonoBehaviour
     private Animator anims;
     private float vertical;
     private float horizontal;
-    private Rigidbody2D body;
+    public Rigidbody2D body;
     public Shooting2 shooting;
     private int collisionCount = 0;
+   
+    
     
     public KeyCode Fire = KeyCode.F;
     // Use this for initialization
     void Start()
     {
-        
+       
             shooting = GetComponent<Shooting2>();
             anims = GetComponent<Animator>();
             anims.SetFloat("flying", 2);
 
             body = GetComponent<Rigidbody2D>();
-        
+            
         
         
         
@@ -44,7 +46,11 @@ public class SwordScript : MonoBehaviour
         }
         
     }
+
+
+   
     
+
 
 
     // Update is called once per frame
