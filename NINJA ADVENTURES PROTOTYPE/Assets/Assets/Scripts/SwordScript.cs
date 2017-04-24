@@ -37,11 +37,7 @@ public class SwordScript : MonoBehaviour
             body.gravityScale = 0;
             body.isKinematic = true;
             anims.SetFloat("flying", -2);
-            float angle = 0;
-            if (shooting.angle >= 90)
-            {
-                transform.rotation = Quaternion.AngleAxis(angle, Vector2.left);
-            } else transform.rotation = Quaternion.AngleAxis(angle, Vector2.right);
+            
 
         }
         

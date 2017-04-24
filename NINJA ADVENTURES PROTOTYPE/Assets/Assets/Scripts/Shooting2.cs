@@ -11,10 +11,11 @@ public class Shooting2 : MonoBehaviour
     private float vertical;
     private float horizontal;
     
-    public float angle;
+    
+    
     
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(Fire))
         {
@@ -28,17 +29,18 @@ public class Shooting2 : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().velocity = direction * speed;
             bullet.AddComponent<Animator>();
             bullet.AddComponent<SwordScript>();
-            bullet.GetComponentInChildren<IgnoringPlayer>();
-            
-            
-            
+            bullet.AddComponent<EnablingColliders>();
             Vector3 targetDir = worldMousePos - transform.position;
+
             float angle = Vector2.Angle(targetDir, transform.right);
            
             if (angle > 90f)
             {
                 
-                bullet.GetComponent<Transform>().transform.Rotate(new Vector3(180,0,180));
+                
+                bullet.GetComponent<Transform>().transform.localScale = new Vector3(-1,1,0) ;
+
+
             }
             
         }

@@ -4,12 +4,17 @@ using System.Collections;
 public class WeaponDirection : MonoBehaviour {
 
     public bool lookAtCursor;
+    public GameObject weapon;
+    public GameObject player;
     void Start () {
-	
+	    weapon = GameObject.Find("Weapon");
+        player= GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
+        weapon.GetComponent<Transform>().transform.position = player.GetComponent<Transform>().transform.position;
         if (lookAtCursor == false)
         {
 

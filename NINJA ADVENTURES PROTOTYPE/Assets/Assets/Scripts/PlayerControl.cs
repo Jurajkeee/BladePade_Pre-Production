@@ -3,7 +3,7 @@ using System.Collections;
 
 
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControll : MonoBehaviour
 {
 
 
