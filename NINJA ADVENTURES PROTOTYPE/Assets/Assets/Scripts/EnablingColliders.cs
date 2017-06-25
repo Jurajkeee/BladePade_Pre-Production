@@ -5,15 +5,21 @@ public class EnablingColliders : MonoBehaviour
 {
     private Transform childObj;
     private Transform childObjSecond;
+    private Collider2D myColl;
+
 	// Use this for initialization
 	void Start ()
 	{
 	    childObj = transform.FindChild("Collider");
 	    childObjSecond = transform.FindChild("Effectors");
-        childObj.gameObject.SetActive(false);
+        childObj.gameObject.SetActive(true);
         childObjSecond.gameObject.SetActive(false);
-        
-	}
+	    myColl = GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(myColl, childObj.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(myColl, childObjSecond.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(childObj.GetComponent<Collider2D>(), myColl);
+        Physics2D.IgnoreCollision(childObjSecond.GetComponent<Collider2D>(), myColl);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,10 +28,11 @@ public class EnablingColliders : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Side" || collision.transform.tag == "LeftSide" || collision.transform.tag =="Ground")
+        if (collision.transform.tag == "Side" )
         {
-            childObj.gameObject.SetActive(true);
+            
             childObjSecond.gameObject.SetActive(true);
+            myColl.enabled = !myColl.enabled;
 
         }
     }

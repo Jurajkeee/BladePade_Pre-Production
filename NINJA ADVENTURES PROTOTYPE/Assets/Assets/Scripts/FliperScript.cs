@@ -7,6 +7,7 @@ public class FliperScript : MonoBehaviour {
     private Vector3 direction;
     public KeyCode leftButton = KeyCode.A;
     public KeyCode rightButton = KeyCode.D;
+
     // Use this for initialization
     void Start () {
 	

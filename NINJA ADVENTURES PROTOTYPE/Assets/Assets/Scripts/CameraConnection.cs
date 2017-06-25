@@ -5,17 +5,17 @@ public class CameraConnection : MonoBehaviour
 {
     
     public GameObject objectToConnect;
-    private Vector3 offset;
+    public GameObject camera;
 	// Use this for initialization
 	void Start ()
 	{
-        offset = transform.position - objectToConnect.transform.position;
+        
     }
 	
 	// Update is called once per frame
 	void LateUpdate ()
 	{
-        transform.position = objectToConnect.transform.position + offset;
+        camera.transform.position = new Vector3(objectToConnect.transform.position.x, camera.transform.position.y, -3);
 
     }
 }

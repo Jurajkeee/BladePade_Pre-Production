@@ -7,7 +7,7 @@ public class WeaponDirection : MonoBehaviour {
     public GameObject weapon;
     public GameObject player;
     void Start () {
-	    weapon = GameObject.Find("Weapon");
+	    
         player= GameObject.Find("Player");
 	}
 	

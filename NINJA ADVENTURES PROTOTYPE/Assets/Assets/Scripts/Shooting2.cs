@@ -10,40 +10,43 @@ public class Shooting2 : MonoBehaviour
     private Animator anims;
     private float vertical;
     private float horizontal;
-    
-    
-    
-    
+    public Transform weapon;
+    public float Counter;
+    public float timeBetweenShoot = 0.3333f;
+    private float timestamp;
+    public PlayerControl playerControl;
+
+    public float angle1;
+
+
+
 
     void Update()
     {
-        if (Input.GetKeyDown(Fire))
+        angle1 = transform.eulerAngles.z;
+        if (Time.time>=timestamp && Input.GetKeyUp(Fire))
         {
+            
             Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = (Vector2)((worldMousePos - transform.position));
             direction.Normalize();
-            GameObject bullet = (GameObject)Instantiate(
-                                    rocket,
-                                    transform.position + (Vector3)(direction * 0.5f),
-                                    Quaternion.identity);
+            Vector3 targetDir = worldMousePos - transform.position;
+            float angle = Vector2.Angle(targetDir, transform.right);
+            GameObject bullet = (GameObject)Instantiate(rocket,transform.position + (Vector3)(direction * 0.5f),Quaternion.identity);
             bullet.GetComponent<Rigidbody2D>().velocity = direction * speed;
             bullet.AddComponent<Animator>();
             bullet.AddComponent<SwordScript>();
-            bullet.AddComponent<EnablingColliders>();
-            Vector3 targetDir = worldMousePos - transform.position;
-
-            float angle = Vector2.Angle(targetDir, transform.right);
-           
-            if (angle > 90f)
+            bullet.AddComponent<EnablingColliders>();                    
+            if (angle1 > 90f && angle1 < 270f)
             {
-                
-                
-                bullet.GetComponent<Transform>().transform.localScale = new Vector3(-1,1,0) ;
-
-
+                bullet.GetComponent<Transform>().transform.localScale = new Vector3(-1,1,-1);
             }
+            timestamp = Time.time + timeBetweenShoot;
+            
+            
             
         }
+        
         //place for ignoring collision
 
         //ignoring collision ended
@@ -53,8 +56,8 @@ public class Shooting2 : MonoBehaviour
     {
         anims = GetComponent<Animator>();
         anims.SetFloat("flying", 2);
-        
-        
+
+        playerControl = GetComponent<PlayerControl>();
         shooted = GetComponent<SwordScript>();
     }
     

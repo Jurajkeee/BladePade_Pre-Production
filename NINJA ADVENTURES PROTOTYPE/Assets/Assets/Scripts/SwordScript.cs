@@ -8,7 +8,7 @@ public class SwordScript : MonoBehaviour
     private float horizontal;
     public Rigidbody2D body;
     public Shooting2 shooting;
-    private int collisionCount = 0;
+    public int count = 1;
    
     
     
@@ -16,7 +16,7 @@ public class SwordScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-       
+          
             shooting = GetComponent<Shooting2>();
             anims = GetComponent<Animator>();
             anims.SetFloat("flying", 2);
@@ -40,6 +40,7 @@ public class SwordScript : MonoBehaviour
             
 
         }
+       
         
     }
 
@@ -52,7 +53,11 @@ public class SwordScript : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F)) count++;
+        if (count > 5)
         
+            Destroy(gameObject);
+       
         
 
     }

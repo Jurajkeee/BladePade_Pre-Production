@@ -3,12 +3,12 @@ using System.Collections;
 
 
 
-public class PlayerControll : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
 
 
 
-    private Animator anim;
+    public Animator anim;
     public float speed = 500;
     public float jumpForce = 40;
     public KeyCode leftButton = KeyCode.A;
@@ -16,7 +16,7 @@ public class PlayerControll : MonoBehaviour
     public KeyCode upButton = KeyCode.W;
     public KeyCode downButton = KeyCode.S;
     public KeyCode addJumpForceButton = KeyCode.Space;
-    public bool isFacingRight = true;
+    
     private Vector3 direction;
     private float vertical;
     private float horizontal;
@@ -25,45 +25,48 @@ public class PlayerControll : MonoBehaviour
     private bool jump;
     public KeyCode Fire = KeyCode.F;
     public bool lookAtCursor;
+    public FliperScript fliperScript;
     
-  
-    
-    
-
-
-    private void Start()
-
+           private void Start()
     {
-        
+        fliperScript = GetComponent<FliperScript>();
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         body.fixedAngle = true;
-       
     }
-   
-        private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Ground" || collision.transform.tag == "bullet")
-        {
-
+        if(collision.transform.tag == "Ground" )
+        {            
             body.drag = 10;
             jump = true;
         }
-        if (collision.transform.tag == "Side"|| collision.transform.tag == "LeftSide")
+        if (collision.transform.tag != "Ground")
         {
             body.drag = 0;
             jump = false;
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "Ground" || collision.transform.tag == "bullet")
-        {
+    
 
-            body.drag = 0;
+    
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Ground" )
+        {
+            body.drag = 10;
+            jump = true;
+        }
+        if (collision.transform.tag != "Ground")
+        {
+            body.drag = 0;            
             jump = false;
         }
-        if (collision.transform.tag == "Side" || collision.transform.tag == "LeftSide")
+           }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Ground" )
         {
             body.drag = 0;
             jump = false;
@@ -175,15 +178,44 @@ public class PlayerControll : MonoBehaviour
         if (Input.GetKey(Fire)) {
            
 
-            anim.SetFloat("flying", 2);
+            
             anim.SetFloat("Jumping", 0);
             anim.SetFloat("Forward", 0);
             anim.SetFloat("Standing", 0);
             anim.SetFloat("Shooting", 1);
+            anim.SetFloat("Real_shooting", 0);
             lookAtCursor = true;
+         
+
         }
-        
-        
+        if (Input.GetKeyUp(Fire))
+        {
+            anim.SetFloat("Jumping", 0);
+            anim.SetFloat("Forward", 0);
+            anim.SetFloat("Standing", 0);
+            anim.SetFloat("Shooting", 0);
+            anim.SetFloat("Real_shooting", 1);
+
+        }
+
+
+
+
+
+        if (Input.GetKeyDown(Fire) && fliperScript.isFacingRight==false)
+        {
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            theScale.y *= -1;
+            transform.localScale = theScale;
+        }
+        if (Input.GetKeyUp(Fire) && fliperScript.isFacingRight == false)
+        {
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            theScale.y *= -1;
+            transform.localScale = theScale;
+        }
     }
 
     

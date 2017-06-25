@@ -50,6 +50,7 @@
      <Compile Include="Assets\Assets\Scripts\FliperScript.cs" />
      <Compile Include="Assets\Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Assets\Scripts\Shooting2.cs" />
+     <Compile Include="Assets\Assets\Scripts\SwordCounter.cs" />
      <Compile Include="Assets\Assets\Scripts\SwordScript.cs" />
      <Compile Include="Assets\Assets\Scripts\WeaponDirection.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
