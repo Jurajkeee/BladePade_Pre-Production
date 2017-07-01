@@ -14,6 +14,7 @@ public class WeaponDirection : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+        
         weapon.GetComponent<Transform>().transform.position = player.GetComponent<Transform>().transform.position;
         if (lookAtCursor == false)
         {
