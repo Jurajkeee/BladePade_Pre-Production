@@ -1,0 +1,490 @@
+fileFormatVersion: 2
+guid: 74a74351d5eaad34d85bac2fb638c6b8
+timeCreated: 1490129931
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PrototypeSlicesheet_0
+    21300002: PrototypeSlicesheet_1
+    21300004: PrototypeSlicesheet_2
+    21300006: PrototypeSlicesheet_3
+    21300008: PrototypeSlicesheet_4
+    21300010: PrototypeSlicesheet_5
+    21300012: PrototypeSlicesheet_6
+    21300014: PrototypeSlicesheet_7
+    21300016: PrototypeSlicesheet_8
+    21300018: PrototypeSlicesheet_9
+    21300020: PrototypeSlicesheet_10
+    21300022: PrototypeSlicesheet_11
+    21300024: PrototypeSlicesheet_12
+    21300026: PrototypeSlicesheet_13
+    21300028: PrototypeSlicesheet_14
+    21300030: PrototypeSlicesheet_15
+    21300032: PrototypeSlicesheet_16
+    21300034: PrototypeSlicesheet_17
+    21300036: PrototypeSlicesheet_18
+    21300038: PrototypeSlicesheet_19
+    21300040: PrototypeSlicesheet_20
+    21300042: PrototypeSlicesheet_21
+    21300044: PrototypeSlicesheet_22
+    21300046: PrototypeSlicesheet_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PrototypeSlicesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9397
+        width: 603
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62, y: 62.505493}
+        - {x: -62, y: -61.494507}
+        - {x: 62, y: -61.494507}
+        - {x: 62, y: 62.505493}
+    - name: PrototypeSlicesheet_1
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 9397
+        width: 606
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.018402, y: 62.505493}
+        - {x: -62.018402, y: -61.494507}
+        - {x: 62.981598, y: -61.494507}
+        - {x: 62.981598, y: 62.505493}
+    - name: PrototypeSlicesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 9397
+        width: 605
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61.994415, y: 62.505493}
+        - {x: -61.994415, y: -61.494507}
+        - {x: 63.005585, y: -61.494507}
+        - {x: 63.005585, y: 62.505493}
+    - name: PrototypeSlicesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 9397
+        width: 605
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61.922424, y: 62.505493}
+        - {x: -61.922424, y: -61.494507}
+        - {x: 63.077576, y: -61.494507}
+        - {x: 63.077576, y: 62.505493}
+    - name: PrototypeSlicesheet_4
+      rect:
+        serializedVersion: 2
+        x: 2566
+        y: 9397
+        width: 605
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61.983215, y: 62.505493}
+        - {x: -61.983215, y: -61.494507}
+        - {x: 63.016785, y: -61.494507}
+        - {x: 63.016785, y: 62.505493}
+    - name: PrototypeSlicesheet_5
+      rect:
+        serializedVersion: 2
+        x: 3186
+        y: 9397
+        width: 605
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.007202, y: 62.505493}
+        - {x: -62.007202, y: -61.494507}
+        - {x: 62.992798, y: -61.494507}
+        - {x: 62.992798, y: 62.505493}
+    - name: PrototypeSlicesheet_6
+      rect:
+        serializedVersion: 2
+        x: 3821
+        y: 9397
+        width: 605
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61.95923, y: 62.505493}
+        - {x: -61.95923, y: -61.494507}
+        - {x: 63.04077, y: -61.494507}
+        - {x: 63.04077, y: 62.505493}
+    - name: PrototypeSlicesheet_7
+      rect:
+        serializedVersion: 2
+        x: 4470
+        y: 9397
+        width: 606
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.044006, y: 62.505493}
+        - {x: -62.044006, y: -61.494507}
+        - {x: 62.955994, y: -61.494507}
+        - {x: 62.955994, y: 62.505493}
+    - name: PrototypeSlicesheet_8
+      rect:
+        serializedVersion: 2
+        x: 5105
+        y: 9407
+        width: 605
+        height: 593
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61.99597, y: 61.55359}
+        - {x: -61.99597, y: -60.44641}
+        - {x: 63.00403, y: -60.44641}
+        - {x: 63.00403, y: 61.55359}
+    - name: PrototypeSlicesheet_9
+      rect:
+        serializedVersion: 2
+        x: 5735
+        y: 9397
+        width: 605
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61.972046, y: 62.505493}
+        - {x: -61.972046, y: -61.494507}
+        - {x: 63.027954, y: -61.494507}
+        - {x: 63.027954, y: 62.505493}
+    - name: PrototypeSlicesheet_10
+      rect:
+        serializedVersion: 2
+        x: 6379
+        y: 9407
+        width: 606
+        height: 593
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.08081, y: 61.55359}
+        - {x: -62.08081, y: -60.44641}
+        - {x: 62.91919, y: -60.44641}
+        - {x: 62.91919, y: 61.55359}
+    - name: PrototypeSlicesheet_11
+      rect:
+        serializedVersion: 2
+        x: 7019
+        y: 9397
+        width: 606
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.00879, y: 62.505493}
+        - {x: -62.00879, y: -61.494507}
+        - {x: 62.99121, y: -61.494507}
+        - {x: 62.99121, y: 62.505493}
+    - name: PrototypeSlicesheet_12
+      rect:
+        serializedVersion: 2
+        x: 7668
+        y: 9397
+        width: 606
+        height: 603
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.093628, y: 62.505493}
+        - {x: -62.093628, y: -61.494507}
+        - {x: 62.906372, y: -61.494507}
+        - {x: 62.906372, y: 62.505493}
+    - name: PrototypeSlicesheet_13
+      rect:
+        serializedVersion: 2
+        x: 8313
+        y: 9407
+        width: 605
+        height: 593
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61.99768, y: 61.55359}
+        - {x: -61.99768, y: -60.44641}
+        - {x: 63.00232, y: -60.44641}
+        - {x: 63.00232, y: 61.55359}
+    - name: PrototypeSlicesheet_14
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 8926
+        width: 361
+        height: 407
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35.992798, y: 42.0448}
+        - {x: -1.0072021, y: 42.0448}
+        - {x: -37.007202, y: 17.0448}
+        - {x: -37.007202, y: -41.9552}
+        - {x: 6.992798, y: -41.9552}
+        - {x: 13.992798, y: -34.9552}
+        - {x: 37.992798, y: 5.0448}
+        - {x: 37.992798, y: 40.0448}
+    - name: PrototypeSlicesheet_15
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 8860
+        width: 365
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1.1664047, y: 44.527954}
+        - {x: -35.166405, y: 25.527954}
+        - {x: -37.166405, y: 1.5279541}
+        - {x: -37.166405, y: -39.472046}
+        - {x: -36.166405, y: -43.472046}
+        - {x: 8.833595, y: -43.472046}
+        - {x: 15.833595, y: -39.472046}
+        - {x: 38.833595, y: 9.527954}
+        - {x: 38.833595, y: 44.527954}
+    - name: PrototypeSlicesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 8816
+        width: 376
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.4143982, y: 45.016724}
+        - {x: -35.5856, y: 28.016724}
+        - {x: -38.5856, y: 6.0167236}
+        - {x: -38.5856, y: -37.983276}
+        - {x: -32.5856, y: -35.983276}
+        - {x: -15.585602, y: -31.983276}
+        - {x: 5.414398, y: -43.983276}
+        - {x: 11.414398, y: -43.983276}
+        - {x: 29.414398, y: -25.983276}
+        - {x: 39.4144, y: -0.98327637}
+        - {x: 39.4144, y: 45.016724}
+    - name: PrototypeSlicesheet_17
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 8821
+        width: 354
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.0119934, y: 49.04077}
+        - {x: -36.011993, y: 23.040771}
+        - {x: -36.011993, y: -34.95923}
+        - {x: -30.011993, y: -38.95923}
+        - {x: -24.011993, y: -37.95923}
+        - {x: -22.011993, y: -46.95923}
+        - {x: -20.011993, y: -47.95923}
+        - {x: -8.011993, y: -47.95923}
+        - {x: 36.988007, y: 0.040771484}
+        - {x: 36.988007, y: 49.04077}
+    - name: PrototypeSlicesheet_18
+      rect:
+        serializedVersion: 2
+        x: 2053
+        y: 8801
+        width: 322
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6.045624, y: 47.444702}
+        - {x: -33.045624, y: 25.444702}
+        - {x: -31.045624, y: 15.444702}
+        - {x: -27.045624, y: 12.444702}
+        - {x: -22.045624, y: 12.444702}
+        - {x: -27.045624, y: 10.444702}
+        - {x: -33.045624, y: 6.444702}
+        - {x: -33.045624, y: -46.555298}
+        - {x: -5.045624, y: -46.555298}
+        - {x: 33.954376, y: 4.444702}
+        - {x: 33.954376, y: 44.444702}
+        - {x: 32.954376, y: 47.444702}
+    - name: PrototypeSlicesheet_19
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 8352
+        width: 361
+        height: 405
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.007202, y: 42.489502}
+        - {x: -37.007202, y: 24.489502}
+        - {x: -37.007202, y: -41.510498}
+        - {x: 8.992798, y: -41.510498}
+        - {x: 21.992798, y: -39.510498}
+        - {x: 37.992798, y: 5.489502}
+        - {x: 37.992798, y: 42.489502}
+    - name: PrototypeSlicesheet_20
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 8323
+        width: 362
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3.052002, y: 44.550415}
+        - {x: -37.052002, y: 13.550415}
+        - {x: -37.052002, y: -38.449585}
+        - {x: -35.052002, y: -43.449585}
+        - {x: 20.947998, y: -43.449585}
+        - {x: 37.947998, y: -15.449585}
+        - {x: 37.947998, y: 37.550415}
+        - {x: 30.947998, y: 44.550415}
+    - name: PrototypeSlicesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 8308
+        width: 376
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2.4143982, y: 44.978394}
+        - {x: -26.585602, y: 22.978394}
+        - {x: -38.5856, y: -6.0216064}
+        - {x: -38.5856, y: -39.021606}
+        - {x: -21.585602, y: -44.021606}
+        - {x: 21.414398, y: -44.021606}
+        - {x: 39.4144, y: -8.021606}
+        - {x: 39.4144, y: 41.978394}
+        - {x: 31.414398, y: 44.978394}
+    - name: PrototypeSlicesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 8293
+        width: 347
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1.4880066, y: 48.406372}
+        - {x: -35.511993, y: 26.406372}
+        - {x: -35.511993, y: -44.593628}
+        - {x: -30.511993, y: -47.593628}
+        - {x: 16.488007, y: -47.593628}
+        - {x: 36.488007, y: 8.406372}
+        - {x: 36.488007, y: 48.406372}
+    - name: PrototypeSlicesheet_23
+      rect:
+        serializedVersion: 2
+        x: 2053
+        y: 8289
+        width: 322
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.045624, y: 47.58716}
+        - {x: -33.045624, y: 32.58716}
+        - {x: -33.045624, y: -40.41284}
+        - {x: -25.045624, y: -46.41284}
+        - {x: -2.0456238, y: -46.41284}
+        - {x: 33.954376, y: 7.587158}
+        - {x: 33.954376, y: 41.58716}
+        - {x: 23.954376, y: 47.58716}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

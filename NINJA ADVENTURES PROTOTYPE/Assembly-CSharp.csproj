@@ -45,19 +45,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Assets\Scripts\ActiveMenu.cs" />
-     <Compile Include="Assets\Assets\Scripts\CameraConnection.cs" />
-     <Compile Include="Assets\Assets\Scripts\EnablingColliders.cs" />
-     <Compile Include="Assets\Assets\Scripts\FliperScript.cs" />
-     <Compile Include="Assets\Assets\Scripts\LEVEL CONTROLLERS\LEVEL1.cs" />
-     <Compile Include="Assets\Assets\Scripts\MenuScript.cs" />
-     <Compile Include="Assets\Assets\Scripts\PlayerControl.cs" />
-     <Compile Include="Assets\Assets\Scripts\PlayerINFOScript.cs" />
-     <Compile Include="Assets\Assets\Scripts\Shooting2.cs" />
-     <Compile Include="Assets\Assets\Scripts\Shop.cs" />
-     <Compile Include="Assets\Assets\Scripts\SwordCounter.cs" />
-     <Compile Include="Assets\Assets\Scripts\SwordScript.cs" />
-     <Compile Include="Assets\Assets\Scripts\WeaponDirection.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\ActiveMenu.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\CameraConnection.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\EnablingColliders.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\FliperScript.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\LEVEL CONTROLLERS\LEVEL1.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\MenuScript.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\PlayerControl.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\PlayerINFOScript.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\Shooting2.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\Shop.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\SwordCounter.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\SwordScript.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\WeaponDirection.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\WeaponShop.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GroupLayer.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
