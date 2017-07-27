@@ -13,11 +13,11 @@ public class WeaponShop : MonoBehaviour
     //Variables
     public int costGold;
     public int costCryst;
-    public int buttonClickedOnObjectForBuy;
+    public int buttonClickedOnObjectForBuy1;
 
     void Start()
     {
-        menuGO = GameObject.Find("BeginningMenu");
+        menuGO = GameObject.Find("EventSystem");
         menuScript = menuGO.GetComponent<MenuScript>();
         player = GameObject.Find("PlayerInfoMenu");
         playerInfo = player.GetComponent<PlayerINFOScript>();
@@ -30,51 +30,28 @@ public class WeaponShop : MonoBehaviour
 
     void Update()
     {
+        PlayerPrefs.SetFloat("costGoldWeapon", costGold);
+        PlayerPrefs.SetFloat("costCrystWeapon", costCryst);
 
     }
-    public void BuyClicked()
-    {
-
-        if (buttonClickedOnObjectForBuy > 0)
-        {
-            menuScript.secondQuestionWeapon.enabled = true;
-            menuScript.weaponMenu.enabled = false;
-        }
-    }
-    public void YesBut()
-    {
-        menuScript.secondQuestionWeapon.enabled = false;
-        menuScript.weaponMenu.enabled = true;
-        if (playerInfo.gold >= costGold && playerInfo.crystals >= costCryst)
-        {
-            playerInfo.gold -= costGold;
-            playerInfo.crystals -= costCryst;
-            playerInfo.weapon = buttonClickedOnObjectForBuy;
-            menuScript.secondQuestionWeapon.enabled = false;
-            menuScript.weaponMenu.enabled = true;
-        }
-        else Debug.Log("Space for another canvas");
-    }
-    public void NoBut()
-    {
-        menuScript.secondQuestionWeapon.enabled = false;
-        menuScript.weaponMenu.enabled = true;
-    }
+   
+    
+    
     public void WeaponSkin1()
     {
-        buttonClickedOnObjectForBuy = 1;
+        buttonClickedOnObjectForBuy1 = 1;
         costGold = 100;
         costCryst = 0;
     }
     public void WeaponSkin2()
     {
-        buttonClickedOnObjectForBuy = 2;
+        buttonClickedOnObjectForBuy1 = 2;
         costGold = 1000;
         costCryst = 10;
     }
     public void WeaponSkin3()
     {
-        buttonClickedOnObjectForBuy = 3;
+        buttonClickedOnObjectForBuy1 = 3;
         costGold = 5000;
         costCryst = 50;
     }

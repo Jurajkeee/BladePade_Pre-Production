@@ -48,6 +48,7 @@
      <Compile Include="Assets\Game Assets\Scripts\ActiveMenu.cs" />
      <Compile Include="Assets\Game Assets\Scripts\CameraConnection.cs" />
      <Compile Include="Assets\Game Assets\Scripts\EnablingColliders.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\EnergyTimer.cs" />
      <Compile Include="Assets\Game Assets\Scripts\FliperScript.cs" />
      <Compile Include="Assets\Game Assets\Scripts\LEVEL CONTROLLERS\LEVEL1.cs" />
      <Compile Include="Assets\Game Assets\Scripts\MenuScript.cs" />

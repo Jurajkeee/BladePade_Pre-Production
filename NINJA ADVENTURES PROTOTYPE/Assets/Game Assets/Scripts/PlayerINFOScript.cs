@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System;
 
 public class PlayerINFOScript : MonoBehaviour {
     public int skin;
@@ -9,21 +11,21 @@ public class PlayerINFOScript : MonoBehaviour {
     public int swords;
     [Range(0,100)]public float health;
     public float levelTime;
-    [Range(0,50)]public float energy;
+    [Range(0,100)]public float energy;
+    public EnergyTimer energyTimer;
     // Energy restoring
-    
-
-
+   
     void Start () {
+
+        energyTimer = GameObject.Find("EventSystem").GetComponent<EnergyTimer>();
+        skin = PlayerPrefs.GetInt("skin");
+        weapon = PlayerPrefs.GetInt("weapon");
+        gold = PlayerPrefs.GetInt("gold");
+        crystals = PlayerPrefs.GetInt("crystals");
+        swords = PlayerPrefs.GetInt("swords");
         
-        skin = PlayerPrefs.GetInt("skin", 0);
-        weapon = PlayerPrefs.GetInt("weapon", 0);
-        gold = PlayerPrefs.GetInt("gold", 0);
-        crystals = PlayerPrefs.GetInt("crystals", 0);
-        swords = PlayerPrefs.GetInt("swords", 0);
-        
-        levelTime = PlayerPrefs.GetInt("levelTime", 0);
-        energy = PlayerPrefs.GetFloat("energy", 0);
+        levelTime = PlayerPrefs.GetInt("levelTime");
+        energy = PlayerPrefs.GetFloat("energy");
         // Energy restoring
     }
     private void OnDestroy()
@@ -44,7 +46,10 @@ public class PlayerINFOScript : MonoBehaviour {
     }
     void Update ()
     {
-	  
-
+        if (energyTimer != null)
+        
+            energy = energyTimer.eenergy;
+        
 	}
+ 
 }

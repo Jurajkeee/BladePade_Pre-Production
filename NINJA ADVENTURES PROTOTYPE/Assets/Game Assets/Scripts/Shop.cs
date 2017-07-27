@@ -7,15 +7,17 @@ public class Shop : MonoBehaviour {
     public GameObject player;
     public MenuScript menuScript;
     public GameObject menuGO;
+    
     //Canvases
     
     //Variables
     public int costGold;
     public int costCryst;
     public int buttonClickedOnObjectForBuy;
+    
 
     void Start () {
-        menuGO = GameObject.Find("BeginningMenu");
+        menuGO = GameObject.Find("EventSystem");
         menuScript = menuGO.GetComponent<MenuScript>();
         player = GameObject.Find("PlayerInfoMenu");
         playerInfo = player.GetComponent<PlayerINFOScript>();
@@ -27,36 +29,13 @@ public class Shop : MonoBehaviour {
 	
 	
 	void Update () {
-	
-	}
-    public void BuyClicked()
-    {
+        PlayerPrefs.SetFloat("costGold", costGold);
+        PlayerPrefs.SetFloat("costCryst", costCryst);
         
-        if (buttonClickedOnObjectForBuy > 0)
-        {
-            menuScript.secondQuestion.enabled = true;
-            menuScript.armourMenu.enabled = false;
-        }
     }
-    public void YesBut()
-    {
-        menuScript.secondQuestion.enabled = false;
-        menuScript.armourMenu.enabled = true;
-        if (playerInfo.gold >= costGold && playerInfo.crystals >= costCryst)
-        {
-            playerInfo.gold -= costGold;
-            playerInfo.crystals -= costCryst;
-            playerInfo.skin = buttonClickedOnObjectForBuy;
-            menuScript.secondQuestion.enabled = false;
-            menuScript.armourMenu.enabled = true;
-        }
-        else Debug.Log("Space for another canvas");
-    }
-    public void NoBut()
-    {
-        menuScript.secondQuestion.enabled = false;
-        menuScript.armourMenu.enabled = true;
-    }
+    
+    
+    
     public void Skin1()
     {
         buttonClickedOnObjectForBuy = 1;
@@ -75,4 +54,9 @@ public class Shop : MonoBehaviour {
         costGold = 5000;
         costCryst = 50;
     }
+    public void NotEnough()
+    {
+        
+    }
+
 }
