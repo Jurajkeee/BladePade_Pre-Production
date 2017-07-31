@@ -3,42 +3,121 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class LEVEL1 : MonoBehaviour {
+    //Timer
+    public Text timer;
     //SwordCounter
     public int swordCount;
     public Text swordCountGUI;
     public KeyCode Fire;
     public GameObject shooting2;
     public Shooting2 weaponScript;
+    public Image bg_swordcounter;
+    public int goldAchieve;
+    public int silverAchieve;
+    public int bronzeAchieve;
     //Healthbar
     public GameObject player;
     public PlayerINFOScript info;
     public Text healthIndicator;
     public Image loading;
+    //Results
+    public FinishScript finishScript;
+    public Canvas resultCanvas;
+    public Image bG_result;
+    public Image medal_1;
+    public Image medal_2;
+    public Image medal_3;
+    public Image time_1;
+    public Text time_on_level;
+    public int coinsPicked;
+    public float succesfulTime;
+
 	
 	void Start () {
         //SwordCounter
         UpdateScore();
         shooting2 = GameObject.Find("weapon");
         weaponScript = shooting2.GetComponent<Shooting2>();
+        bg_swordcounter = bg_swordcounter.GetComponent<Image>();
+        bg_swordcounter.color = new Color32(255, 255, 68, 255);
         //HealthBar
         player = GameObject.Find("Player");
         info = player.GetComponent<PlayerINFOScript>();
         healthIndicator = healthIndicator.GetComponent<Text>();
         loading = loading.GetComponent<Image>();
-	}
+        //Results
+        finishScript = GameObject.Find("Finish").GetComponent<FinishScript>();
+        resultCanvas= resultCanvas.GetComponent<Canvas>();
+        bG_result= bG_result.GetComponent<Image>();
+        medal_1= medal_1.GetComponent<Image>();
+        medal_2= medal_2.GetComponent<Image>();
+        medal_3 = medal_3.GetComponent<Image>();
+        time_1 = time_1.GetComponent<Image>();
+        time_on_level = time_on_level.GetComponent<Text>();
+        resultCanvas.enabled = false;
+        time_1.enabled = false;
+        timer = timer.GetComponent<Text>();
+        
+    }
 	
 	
 	void Update () {
+        timer.text = info.level1NewTime.ToString();
         //HealthBar
         loading.fillAmount = info.health/100;
         healthIndicator.text = info.health.ToString();
         //SwordCounter
-        if (Input.GetKeyDown(Fire)&&swordCount>0)
+        if (Input.GetKeyDown(Fire)&&swordCount>=0)
         {
             RemoveSword();
             
         }
-        if (swordCount <= 0) weaponScript.enabled = false;
+        if (swordCount > goldAchieve)
+        {
+            bg_swordcounter.color  = new Color32(244, 244, 244, 255);
+            bG_result.color = new Color32(244, 244, 244, 255);
+        }
+        if (swordCount > bronzeAchieve)
+        {
+            bg_swordcounter.color = new Color32(255, 174, 0, 255);
+            bG_result.color = new Color32(255, 174, 0, 255);
+        }
+        switch (coinsPicked)
+        {
+            case 0:
+                medal_1.enabled = false;
+                medal_2.enabled = false;
+                medal_3.enabled = false;
+                break;
+            case 1:
+                medal_1.enabled =true;
+                break;
+            case 2:
+                medal_1.enabled = true ;
+                medal_2.enabled = true;
+                break;
+            case 3:
+                medal_1.enabled = true;
+                medal_2.enabled = true;
+                medal_3.enabled = true;
+                break;
+            default:
+                medal_1.enabled = false;
+                medal_2.enabled = false;
+                medal_3.enabled = false;
+                break;
+
+        }
+        if (succesfulTime >= info.level1NewTime) time_1.enabled = true; else time_1.enabled = false;
+        if (finishScript.isFinished)
+        {
+            resultCanvas.enabled = true;
+            time_on_level.text = info.level1NewTime.ToString();
+        }
+        
+       
+
+
     }
     public void UpdateScore()
     {
@@ -50,8 +129,15 @@ public class LEVEL1 : MonoBehaviour {
     }
     public void RemoveSword()
     {
-        swordCount--;
+        swordCount++;
         UpdateScore();
         
     }
+    public void ContinuePressed()
+    {
+        finishScript.isFinished = false;
+        Application.LoadLevel(0);
+        Time.timeScale = 1;
+    }
+
 }
