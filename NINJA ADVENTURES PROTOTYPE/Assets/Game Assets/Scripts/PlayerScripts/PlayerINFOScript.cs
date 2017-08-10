@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System;
 
 public class PlayerINFOScript : MonoBehaviour {
+    public float onLevel;
     public int skin;
     public int weapon;
     public int gold ;
@@ -14,14 +15,19 @@ public class PlayerINFOScript : MonoBehaviour {
     [Range(0,100)]public float energy;
     public EnergyTimer energyTimer;
     // Energy restoring
+    
     //Enemy
     public float timeBetweenHits = 0.5f;
     private float timestamp;
     public float inputDamage;
     //Results
+    
     public float level1BestTime;
     public float level1NewTime;
     public FinishScript finishScript;
+    // Level 2
+    public float level2BestTime;
+    public float level2NewTime;
     void Start () {
         
         energyTimer = GameObject.Find("EventSystem").GetComponent<EnergyTimer>();
@@ -36,6 +42,8 @@ public class PlayerINFOScript : MonoBehaviour {
         // Energy restoring
         // Results
         finishScript = GameObject.Find("Finish").GetComponent<FinishScript>();
+        //Level 2
+        level2BestTime = PlayerPrefs.GetFloat("Level2BestTime");
 
     }
     private void OnDestroy()
@@ -48,10 +56,8 @@ public class PlayerINFOScript : MonoBehaviour {
         
        
         PlayerPrefs.SetFloat("energy", energy);
-        if (finishScript.isFinished && level1NewTime < level1BestTime)
-        {
-            PlayerPrefs.SetFloat("Level1BestTime", level1NewTime);
-        }
+        
+
 
     }
     private void Awake()
@@ -60,7 +66,27 @@ public class PlayerINFOScript : MonoBehaviour {
     }
     void Update ()
     {
+        if (finishScript != null)
+        {
+            if (finishScript.isFinished && (level1NewTime < level1BestTime || level1BestTime == 0) && onLevel==1)
+            {
+                PlayerPrefs.SetFloat("Level1BestTime", level1NewTime);
+                print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            }
+            if (finishScript.isFinished && (level2NewTime < level2BestTime || level2BestTime == 0) && onLevel == 2)
+            {
+                PlayerPrefs.SetFloat("Level2BestTime", level2NewTime);
+                print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+            }
+            if (finishScript.isFinished)
+            {
+                Time.timeScale = 0;
+            }
+        }
+        if (onLevel == 1)
         level1NewTime += Time.deltaTime;
+        if(onLevel == 2)
+        level2NewTime += Time.deltaTime;
         if (energyTimer != null)
         
             energy = energyTimer.eenergy;
@@ -68,10 +94,7 @@ public class PlayerINFOScript : MonoBehaviour {
             health = 0;
             Time.timeScale = 0;
         }
-        if (finishScript.isFinished)
-        {
-            Time.timeScale = 0;
-        }
+        
         
         
 	}

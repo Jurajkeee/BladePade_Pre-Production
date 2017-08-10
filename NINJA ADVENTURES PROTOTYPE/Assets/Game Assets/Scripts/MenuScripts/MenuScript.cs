@@ -43,6 +43,7 @@ public class MenuScript : MonoBehaviour {
     //results
     
     public Text timelevel1;
+    public Text timelevel2;
     void Start() {
         Time.timeScale = 1;
         weaponShopInfo = GameObject.Find("WeaponShoop").GetComponent<WeaponShop>();
@@ -114,6 +115,7 @@ public class MenuScript : MonoBehaviour {
         UpdateGold();
         //
         timelevel1.text = PlayerPrefs.GetFloat("Level1BestTime").ToString();
+        timelevel2.text = PlayerPrefs.GetFloat("Level2BestTime").ToString();
         
     }
     public void BuyClickedArmour()
@@ -219,6 +221,21 @@ public class MenuScript : MonoBehaviour {
             UpdateEnergyBar();
             Application.LoadLevel(1);
         } else
+        {
+            notEnoughtEnergy.enabled = true;
+            levelMenu.enabled = false;
+        }
+
+    }
+    public void Level2ButPress()
+    {
+        if (playerInfoSC.energy >= 10)
+        {
+            RemoveEnergy();
+            UpdateEnergyBar();
+            Application.LoadLevel(2);
+        }
+        else
         {
             notEnoughtEnergy.enabled = true;
             levelMenu.enabled = false;

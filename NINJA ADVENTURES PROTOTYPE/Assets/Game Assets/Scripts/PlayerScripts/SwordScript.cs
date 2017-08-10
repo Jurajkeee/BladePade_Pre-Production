@@ -33,10 +33,7 @@ public class SwordScript : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) count++;
-        if (count > 5)
-
-            Destroy(gameObject);
+       
     }
     void OnCollisionEnter2D(Collision2D collision)
     {

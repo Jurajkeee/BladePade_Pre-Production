@@ -6,7 +6,7 @@ public class LEVEL1 : MonoBehaviour {
     //Timer
     public Text timer;
     //SwordCounter
-    public int swordCount;
+    
     public Text swordCountGUI;
     public KeyCode Fire;
     public GameObject shooting2;
@@ -31,11 +31,13 @@ public class LEVEL1 : MonoBehaviour {
     public Text time_on_level;
     public int coinsPicked;
     public float succesfulTime;
+    // Coins Adding
+    public int added;
 
 	
 	void Start () {
         //SwordCounter
-        UpdateScore();
+        
         shooting2 = GameObject.Find("weapon");
         weaponScript = shooting2.GetComponent<Shooting2>();
         bg_swordcounter = bg_swordcounter.GetComponent<Image>();
@@ -57,6 +59,7 @@ public class LEVEL1 : MonoBehaviour {
         resultCanvas.enabled = false;
         time_1.enabled = false;
         timer = timer.GetComponent<Text>();
+        added = 0;
         
     }
 	
@@ -67,17 +70,14 @@ public class LEVEL1 : MonoBehaviour {
         loading.fillAmount = info.health/100;
         healthIndicator.text = info.health.ToString();
         //SwordCounter
-        if (Input.GetKeyDown(Fire)&&swordCount>=0)
-        {
-            RemoveSword();
-            
-        }
-        if (swordCount > goldAchieve)
+        swordCountGUI.text = weaponScript.Counter.ToString();
+        if (weaponScript.Counter > goldAchieve)
         {
             bg_swordcounter.color  = new Color32(244, 244, 244, 255);
             bG_result.color = new Color32(244, 244, 244, 255);
+            
         }
-        if (swordCount > bronzeAchieve)
+        if (weaponScript.Counter > bronzeAchieve)
         {
             bg_swordcounter.color = new Color32(255, 174, 0, 255);
             bG_result.color = new Color32(255, 174, 0, 255);
@@ -113,31 +113,44 @@ public class LEVEL1 : MonoBehaviour {
         {
             resultCanvas.enabled = true;
             time_on_level.text = info.level1NewTime.ToString();
+            added ++;
+            if (added == 1)
+            {
+                if (weaponScript.Counter < goldAchieve) info.gold += 1000;
+                if (weaponScript.Counter > goldAchieve && weaponScript.Counter < bronzeAchieve) info.gold += 500;
+                if (weaponScript.Counter > bronzeAchieve) info.gold += 100;
+                if (info.level1NewTime < succesfulTime) info.gold += 250;
+                info.crystals += coinsPicked * 10;
+            }
+            //
+           
         }
-        
+
+
+       
+            
        
 
 
+
+
     }
-    public void UpdateScore()
-    {
-        
-            
-            swordCountGUI.text = "" + swordCount;
-        ;
-        
-    }
-    public void RemoveSword()
-    {
-        swordCount++;
-        UpdateScore();
-        
-    }
+
+   
     public void ContinuePressed()
     {
         finishScript.isFinished = false;
         Application.LoadLevel(0);
         Time.timeScale = 1;
     }
+    private void OnDestroy()
+    {
+        
+        
+            
+            
+        
+    }
+
 
 }

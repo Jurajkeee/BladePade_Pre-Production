@@ -7,19 +7,21 @@ public class FliperScript : MonoBehaviour {
     private Vector3 direction;
     public KeyCode leftButton = KeyCode.A;
     public KeyCode rightButton = KeyCode.D;
+    public PlayerControl playerControl;
 
     // Use this for initialization
     void Start () {
-	
+        playerControl = GameObject.Find("Player").GetComponent<PlayerControl>();
 	}
     void Flip()
     {
-        //Fliping completed and needed 100%
+        //Fliping completed and needed 1 00%
         isFacingRight = !isFacingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
-        
         transform.localScale = theScale;
+
+
     }
     // Update is called once per frame
     void Update () {
@@ -27,7 +29,10 @@ public class FliperScript : MonoBehaviour {
             Flip();
         else if (horizontal < 0 && isFacingRight)
             Flip();
-
+        if (transform.localScale.x < 0 && isFacingRight)
+        {
+            isFacingRight = !isFacingRight;
+        }
         //left move needs to add anim Running
         if (Input.GetKey(leftButton))
         {
@@ -46,8 +51,8 @@ public class FliperScript : MonoBehaviour {
         else
             horizontal = 0;
         //Jumping needs to add anim Jumping
-        
 
+        
 
 
 

@@ -26,16 +26,29 @@ public class PlayerControl : MonoBehaviour
     public KeyCode Fire = KeyCode.F;
     public bool lookAtCursor;
     public FliperScript fliperScript;
+    
     //Slower
     public float slowerSpeed;
     public float slowerjumpForce;
+    public ClickingArea clickingArea;
+    public Transform trajectory;
+    public Shooting2 shooting2;
+    //
+    public bool onMovingPlatform;
+    public bool inSlower;
+   [SerializeField] float startSpeed;
+   [SerializeField] float startJumpForce;
     
-    
+
+
     private void Start()
     {
-        
+        shooting2 = shooting2.GetComponent<Shooting2>();
+         clickingArea = clickingArea.GetComponent<ClickingArea>();
+        startSpeed = speed;
+        startJumpForce = jumpForce;
         startingScale = transform.localScale;
-        fliperScript = GetComponent<FliperScript>();
+        fliperScript = GameObject.Find("Player").GetComponent<FliperScript>();
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         body.fixedAngle = true;
@@ -55,6 +68,8 @@ public class PlayerControl : MonoBehaviour
            
         }
         
+
+
     }
     
 
@@ -74,11 +89,10 @@ public class PlayerControl : MonoBehaviour
             jump = false;
            
         }
-        if (collision.transform.name == "Sword (1)(Clone)")
-        {
-            transform.parent = collision.transform;
-        }
-           }
+       
+
+
+    }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.transform.tag == "Ground" )
@@ -87,26 +101,35 @@ public class PlayerControl : MonoBehaviour
             jump = false;
             
         }
-        if (collision.transform.name == "Sword (1)(Clone)")
-        {
-            transform.parent = null;
-        }
+       
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.name == "Slower")
         {
-            speed -= slowerSpeed;
-            jumpForce -= slowerjumpForce;
-
+           inSlower = true;
+        }
+        if (collision.transform.name == "Sword (1)(Clone)" || collision.transform.name == "MovingPlatform")
+        {
+            if (collision.transform.name == "Movingplatform")
+                transform.localScale = new Vector3(0.4323924F, 0.4323924F, 0.4323924F);
+            transform.parent = collision.transform;
+            onMovingPlatform = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform.name == "Slower")
         {
-            speed += slowerSpeed;
-            jumpForce += slowerjumpForce;
+            inSlower = false;
+
+        }
+        if (collision.transform.name == "Sword (1)(Clone)" || collision.transform.name == "MovingPlatform")
+        {
+            if (collision.transform.name == "Movingplatform")
+                transform.localScale = startingScale;
+            transform.parent = null;
+            onMovingPlatform = false;
 
         }
     }
@@ -126,7 +149,25 @@ public class PlayerControl : MonoBehaviour
    
     private void Update()
     {
-        
+       
+        if(!inSlower)
+        {
+            speed = startSpeed;
+            jumpForce = startJumpForce;
+        }else
+        {
+            speed = slowerSpeed;
+            jumpForce = slowerjumpForce;
+        }
+
+        if ( transform.localScale.y != startingScale.y || transform.localScale.z != startingScale.z  )
+        {
+            if (!onMovingPlatform)
+                transform.localScale = startingScale;
+            if(onMovingPlatform)
+                transform.localScale = new Vector3(0.4323924F, 0.4323924F, 0.4323924F);
+        }
+
         if (lookAtCursor == false)
         {
 
@@ -135,7 +176,7 @@ public class PlayerControl : MonoBehaviour
         }
         if (lookAtCursor)
         {
-            Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+            Vector3 lookPos = new Vector3(trajectory.position.x, trajectory.position.y, 0);
             lookPos = lookPos - transform.position;
             float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -178,44 +219,48 @@ public class PlayerControl : MonoBehaviour
         //ANIMATION SCRIPTS
 
 
-        if (Input.GetKey(rightButton) | Input.GetKey(leftButton) && vertical == 0)
+        if (Input.GetKey(rightButton) | Input.GetKey(leftButton) && vertical == 0 && !clickingArea.isClicked)
         {
             anim.SetFloat("Forward", 1);
             anim.SetFloat("Standing", 2);
             anim.SetFloat("Jumping", 0);
             anim.SetFloat("Shooting", 0);
+            anim.SetFloat("Real_shooting", 1);
             lookAtCursor = false;
            
 
         }
-        if (horizontal == 0 && vertical == 0)
+        if (horizontal == 0 && vertical == 0 && !clickingArea.isClicked)
         {
             anim.SetFloat("Jumping", 0);
             anim.SetFloat("Forward", 0);
             anim.SetFloat("Standing", -1);
             anim.SetFloat("Shooting", 0);
+            anim.SetFloat("Real_shooting", 1);
             lookAtCursor = false;
             
         }
-        if (Input.GetKey(addJumpForceButton))
+        if (Input.GetKey(addJumpForceButton) && !clickingArea.isClicked)
         {
             anim.SetFloat("Jumping", 2);
             anim.SetFloat("Forward", 0);
             anim.SetFloat("Standing", 2);
             anim.SetFloat("Shooting", 0);
+            anim.SetFloat("Real_shooting", 1);
             lookAtCursor = false;
             
         }
-        if (Input.GetKey(addJumpForceButton) && (Input.GetKeyDown(rightButton) | Input.GetKeyDown(leftButton)) && vertical == 0)
+        if (Input.GetKey(addJumpForceButton) && (Input.GetKeyDown(rightButton) | Input.GetKeyDown(leftButton)) && vertical == 0 && !clickingArea.isClicked)
         {
            
             anim.SetFloat("Jumping", 2);
             anim.SetFloat("Forward", 0);
             anim.SetFloat("Standing", 0);
             anim.SetFloat("Shooting", 0);
+            anim.SetFloat("Real_shooting", 1);
             lookAtCursor = false;
         }
-        if (Input.GetKey(Fire)) {
+        if (clickingArea.isClicked ) {
            
 
             
@@ -228,7 +273,7 @@ public class PlayerControl : MonoBehaviour
          
 
         }
-        if (Input.GetKeyUp(Fire))
+        if (shooting2.shootNow)
         {
             anim.SetFloat("Jumping", 0);
             anim.SetFloat("Forward", 0);
@@ -237,25 +282,12 @@ public class PlayerControl : MonoBehaviour
             anim.SetFloat("Real_shooting", 1);
 
         }
+        
 
 
 
 
 
-        if (Input.GetKeyDown(Fire) && fliperScript.isFacingRight==false)
-        {
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            theScale.y *= -1;
-            transform.localScale = theScale;
-        }
-        if (Input.GetKeyUp(Fire) && fliperScript.isFacingRight == false)
-        {
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            theScale.y *= -1;
-            transform.localScale = theScale;
-        }
     }
 
     

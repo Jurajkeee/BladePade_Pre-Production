@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ActiveMenu : MonoBehaviour {
     public Canvas pause;
-
+    public int levelid;
     public FinishScript finishScript;
 	// Use this for initialization
 	void Start () {
@@ -39,7 +39,7 @@ public class ActiveMenu : MonoBehaviour {
     }
     public void RestartPressed()
     {
-        Application.LoadLevel(1);
+        Application.LoadLevel(levelid);
         Time.timeScale = 1;
         finishScript.isFinished = false;
     }

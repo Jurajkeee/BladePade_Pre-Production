@@ -15,7 +15,7 @@ public class CameraConnection : MonoBehaviour
         downCamera = GameObject.Find("Down").GetComponent<DownCameraTriggered>();
         topCamera = GameObject.Find("Top").GetComponent<TopCameraTriggered>();
         startPosition = objectToConnect.position;
-        difference.y = camera.position.y - objectToConnect.position.y;
+        difference = camera.position - objectToConnect.position;
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class CameraConnection : MonoBehaviour
     }
     void LateUpdate ()
 	{
-        camera.transform.position = new Vector3(objectToConnect.transform.position.x, camera.position.y, -3);
+        camera.transform.position = new Vector3(objectToConnect.transform.position.x + difference.x,camera.transform.position.y, -3);
 
     }
 }
