@@ -11,11 +11,10 @@ public class PlayerControl : MonoBehaviour
     public Animator anim;
     public float speed = 500;
     public float jumpForce = 40;
-    public KeyCode leftButton = KeyCode.A;
-    public KeyCode rightButton = KeyCode.D;
-    public KeyCode upButton = KeyCode.W;
-    public KeyCode downButton = KeyCode.S;
-    public KeyCode addJumpForceButton = KeyCode.Space;
+    
+   
+    
+    
     
     private Vector3 direction;
     private float vertical;
@@ -38,6 +37,9 @@ public class PlayerControl : MonoBehaviour
     public bool inSlower;
    [SerializeField] float startSpeed;
    [SerializeField] float startJumpForce;
+
+    public MovingJoystick movingjoystick;
+    public JumoingButton jumpingButton;
     
 
 
@@ -52,6 +54,9 @@ public class PlayerControl : MonoBehaviour
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         body.fixedAngle = true;
+
+        movingjoystick = movingjoystick.GetComponent<MovingJoystick>() ;
+        jumpingButton = jumpingButton.GetComponent<JumoingButton>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -184,7 +189,7 @@ public class PlayerControl : MonoBehaviour
 
 
         //left move needs to add anim Running
-        if (Input.GetKey(leftButton))
+        if (movingjoystick.goLeft)
         {
             horizontal = -1;
 
@@ -192,7 +197,7 @@ public class PlayerControl : MonoBehaviour
 
         }
         //right move needs to add anim Running
-        else if (Input.GetKey(rightButton))
+        else if (movingjoystick.goRight)
         {
             horizontal = 1;
 
@@ -201,7 +206,7 @@ public class PlayerControl : MonoBehaviour
         else
             horizontal = 0;
         //Jumping needs to add anim Jumping
-        if (Input.GetKey(addJumpForceButton) && jump)
+        if (jumpingButton.jump && jump)
         {
             body.velocity = new Vector2(0, jumpForce);
 
@@ -219,7 +224,7 @@ public class PlayerControl : MonoBehaviour
         //ANIMATION SCRIPTS
 
 
-        if (Input.GetKey(rightButton) | Input.GetKey(leftButton) && vertical == 0 && !clickingArea.isClicked)
+        if (movingjoystick.goRight | movingjoystick.goLeft && vertical == 0 && !clickingArea.isClicked)
         {
             anim.SetFloat("Forward", 1);
             anim.SetFloat("Standing", 2);
@@ -240,7 +245,7 @@ public class PlayerControl : MonoBehaviour
             lookAtCursor = false;
             
         }
-        if (Input.GetKey(addJumpForceButton) && !clickingArea.isClicked)
+        if (jumpingButton.jump && !clickingArea.isClicked)
         {
             anim.SetFloat("Jumping", 2);
             anim.SetFloat("Forward", 0);
@@ -250,7 +255,7 @@ public class PlayerControl : MonoBehaviour
             lookAtCursor = false;
             
         }
-        if (Input.GetKey(addJumpForceButton) && (Input.GetKeyDown(rightButton) | Input.GetKeyDown(leftButton)) && vertical == 0 && !clickingArea.isClicked)
+        if (jumpingButton.jump && movingjoystick.goRight | movingjoystick.goLeft && vertical == 0 && !clickingArea.isClicked)
         {
            
             anim.SetFloat("Jumping", 2);

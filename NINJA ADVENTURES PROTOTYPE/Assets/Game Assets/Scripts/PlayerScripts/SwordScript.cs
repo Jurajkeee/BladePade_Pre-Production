@@ -8,12 +8,14 @@ public class SwordScript : MonoBehaviour
     private Animator anims;
     private float vertical;
     private float horizontal;
+
     public Rigidbody2D body;
     public Shooting2 shooting;
     public int count = 1;
-   
-    
-    
+    public int clickedTimes;
+
+
+
     public KeyCode Fire = KeyCode.F;
     // Use this for initialization
     void Start()
@@ -33,7 +35,7 @@ public class SwordScript : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-       
+        if (clickedTimes == 2) Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -64,6 +66,10 @@ public class SwordScript : MonoBehaviour
             transform.parent = null; 
 
         }
+    }
+    private void OnMouseUp()
+    {
+        clickedTimes++;
     }
 
 

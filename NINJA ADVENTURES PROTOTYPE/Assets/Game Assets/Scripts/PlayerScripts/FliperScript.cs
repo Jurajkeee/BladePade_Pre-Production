@@ -5,8 +5,7 @@ public class FliperScript : MonoBehaviour {
     public bool isFacingRight = true;
     private float horizontal;
     private Vector3 direction;
-    public KeyCode leftButton = KeyCode.A;
-    public KeyCode rightButton = KeyCode.D;
+    
     public PlayerControl playerControl;
 
     // Use this for initialization
@@ -34,7 +33,7 @@ public class FliperScript : MonoBehaviour {
             isFacingRight = !isFacingRight;
         }
         //left move needs to add anim Running
-        if (Input.GetKey(leftButton))
+        if (playerControl.movingjoystick.goLeft)
         {
             horizontal = -1;
 
@@ -42,7 +41,7 @@ public class FliperScript : MonoBehaviour {
 
         }
         //right move needs to add anim Running
-        else if (Input.GetKey(rightButton))
+        else if (playerControl.movingjoystick.goRight)
         {
             horizontal = 1;
 

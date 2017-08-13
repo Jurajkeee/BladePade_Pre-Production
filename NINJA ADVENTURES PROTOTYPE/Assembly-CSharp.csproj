@@ -50,6 +50,8 @@
      <Compile Include="Assets\Game Assets\Scripts\CameraScripts\TopCameraTriggered.cs" />
      <Compile Include="Assets\Game Assets\Scripts\FallingWall\FallingWall.cs" />
      <Compile Include="Assets\Game Assets\Scripts\GUI\ActiveMenu.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\GUI\JumoingButton.cs" />
+     <Compile Include="Assets\Game Assets\Scripts\GUI\MovingJoystick.cs" />
      <Compile Include="Assets\Game Assets\Scripts\HittingMovingArea\HittingArea.cs" />
      <Compile Include="Assets\Game Assets\Scripts\HittingMovingArea\PathFollowing.cs" />
      <Compile Include="Assets\Game Assets\Scripts\HittingMovingArea\PathScript.cs" />
